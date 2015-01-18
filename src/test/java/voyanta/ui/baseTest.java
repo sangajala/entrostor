@@ -52,7 +52,7 @@ public class baseTest {
 
     @AfterClass
     public static void tearDown(){
-        VoyantaDriver.quit();
+//        VoyantaDriver.quit();
         driver.quit();
         driver=null;
 
