@@ -1,4 +1,4 @@
-package voyanta.ui.reports;
+package voyanta.ui.investor;
 
 import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;

@@ -1,16 +1,12 @@
 package voyanta.ui.web;
 
 import org.openqa.selenium.support.PageFactory;
-import voyanta.ui.pageobjects.*;
-import voyanta.ui.utils.VUtils;
-import voyanta.ui.utils.VerifyUtils;
+import voyanta.ui.pageobjects.DashboardPage;
+import voyanta.ui.pageobjects.LandingPage;
+import voyanta.ui.pageobjects.LoginPage;
+import voyanta.ui.pageobjects.PermissionsPage;
 import voyanta.ui.utils.VoyantaDriver;
 import voyanta.ui.utils.unused.PermissionEnum;
-
-import java.io.File;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by sriramangajala on 22/08/2014.
@@ -20,7 +16,7 @@ public class WebInterface {
     PermissionsPage permissionsPage;
     DashboardPage dashboardPage;
     LoginPage signInPage;
-    BrowsePage browsePage ;
+
     LoginPage loginPage;
     LandingPage landingPage;
 
@@ -84,62 +80,11 @@ public class WebInterface {
         dashboardPage.gotoTab(tab);
     }
 
-    public void openObjectWithName(String objectName) {
-        browsePage = new BrowsePage();
-        browsePage.openObjectWithName(objectName);
-    }
-
-    public void checkifDataVisible(String fieldName, String fieldValue) {
-
-        browsePage.checkFieldVisible(fieldName, fieldValue);
-    }
-
-    public void checkChildLevelObjectCanbeOpened(String name,String childObjectType, String childObjectName, String fieldName, String objectName, boolean b) {
-        browsePage.checkChildLevelObjectCanbeOpened(name,childObjectType,childObjectName,fieldName,objectName,b);
-    }
-
-    public void downloadAndCheckFileDownloaded() {
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-        browsePage.downloadDST();
-        File file = VUtils.getDownloadedFile(".csv");
-        VerifyUtils.True(file != null);
-
-        try {
-            Date FileDate = sdf.parse(String.valueOf(file.lastModified()));
-            Date now = new Date();
-            long diff = FileDate.getTime() - now.getTime();
-//            long diffSeconds = diff / 1000;
-            long diffMinutes = diff / (60 * 1000);
-//            long diffHours = diff / (60 * 60 * 1000);
-            VerifyUtils.True(diffMinutes<2);
 
 
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
 
-    }
 
-    public void checkButtonDisabled(boolean b, String buttonText) {
-        browsePage.checkButtonDisabled(b,buttonText );
-    }
 
-    public void checkImageDisabled(boolean b, String imageName) {
-        browsePage.checkImageDisabled(b,imageName);
-    }
-
-    public void gotoDatamanager() {
-        browsePage.gotoDataManagerPage();
-    }
-
-    public void checkButtonVisible(boolean expected, String buttonName) {
-        browsePage.checkButtonVisible(expected,buttonName);
-    }
-
-    public void selectEditButton() { browsePage.selectEditButton(); }
-
-    public void changeDropDownValue(String name, String value) {
-        browsePage.changeDropDownValue(name,value);}
 
     public void gotoHomePage() {
         dashboardPage.gotoHomePage();

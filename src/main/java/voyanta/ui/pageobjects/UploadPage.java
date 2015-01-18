@@ -132,13 +132,7 @@ public class UploadPage extends abstractWebPage {
             return excelFolder.getAbsolutePath();
     }
 
-    public ListDataManagerPage submitFiles() {
 
-        uploadPageContainer.submitButton.click();
-
-        VoyantaDriver.waitFor(10000);
-        return new ListDataManagerPage();
-    }
 
 
 }

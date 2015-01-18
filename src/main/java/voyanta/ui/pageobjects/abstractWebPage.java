@@ -68,12 +68,7 @@ public class abstractWebPage implements TestersWorldPage {
     }
     
 
-    public ListDataManagerPage gotoDataManagerPage()
-    {
-        pageContainer.linkDataManager.click();
-        VUtils.waitFor(2);
-        return new ListDataManagerPage();
-    }
+
 
     public DashboardPage gotoHomePage()
     {
@@ -90,11 +85,6 @@ public class abstractWebPage implements TestersWorldPage {
         return new UploadPage();
     }
 
-    public ReportsPage gotoReportsPage() {
-     //   pageContainer.linkReports.click();
-
-        return new ReportsPage();
-    }
 
     public void gotoOperatingPage() {
         VoyantaDriver.getCurrentDriver().switchTo().defaultContent();
@@ -107,17 +97,9 @@ public class abstractWebPage implements TestersWorldPage {
 
     }
 
-    public ReportsPage gotoFinancePage() {
-        VoyantaDriver.getCurrentDriver().switchTo().defaultContent();
-        pageContainer.linkFinance.click();
-        return new ReportsPage();
-    }
 
-    public ReportLinksPage gotoReportsLinkInTop() {
-        VoyantaDriver.getCurrentDriver().switchTo().defaultContent();
-        pageContainer.linkReports.click();
-        return new ReportLinksPage();
-    }
+
+
 
     public void gotoTenantPage() {
         VoyantaDriver.getCurrentDriver().switchTo().defaultContent();

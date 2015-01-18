@@ -3,7 +3,6 @@ package voyanta.ui.entreprenuers;
 import voyanta.ui.pageobjects.CreateRulePage;
 import voyanta.ui.pageobjects.DashboardPage;
 import voyanta.ui.pageobjects.ListOfBusinessRulesPage;
-import voyanta.ui.pageobjects.ListOfMappingRulesPage;
 import voyanta.ui.utils.VUtils;
 import voyanta.ui.utils.VerifyUtils;
 import voyanta.ui.utils.VoyantaBucket;
@@ -16,7 +15,7 @@ public class EntrepreneursInterface
 {
     private ListOfBusinessRulesPage listOfBusinessRulesPage;
     private CreateRulePage createRulePage;
-    private ListOfMappingRulesPage listOfMappingRulesPage;
+
     private DashboardPage dashboardPage;
 
 
@@ -99,9 +98,6 @@ public class EntrepreneursInterface
         createRulePage =  listOfBusinessRulesPage.editRuleByName(ruleName);
     }
 
-    public void gotoMappingRulePage() {
-        listOfMappingRulesPage = listOfBusinessRulesPage.gotoMappingRulePage();
-    }
 
     public void createNewMappingRule() {
         createRulePage = listOfBusinessRulesPage.createMappingRule();
