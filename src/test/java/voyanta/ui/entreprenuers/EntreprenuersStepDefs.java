@@ -6,6 +6,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
 import voyanta.ui.pageobjects.LoginPage;
+import voyanta.ui.utils.VUtils;
 import voyanta.ui.web.WebInterface;
 
 /**
@@ -163,11 +164,40 @@ public class EntreprenuersStepDefs {
 
     @When("^he tries to login with valid credentials$")
     public void he_tries_to_login_with_valid_credentials() throws Throwable {
+        entrepreneursInterface.login();
 
     }
 
     @Then("^user is in dashboard page$")
     public void user_is_in_dashboard_page() throws Throwable {
+        user_is_in_homepage_of_entrostor();
+        he_tries_to_login_with_valid_credentials();
+    }
+
+    @Given("^user is in home page$")
+    public void user_is_in_home_page() throws Throwable {
+
+    }
+
+    @When("^navigates to 'Proposal' Page$")
+    public void navigates_to_Proposal_Page() throws Throwable {
+       entrepreneursInterface.gotoProposalPage();
+    }
+
+    @When("^creates proposal with default data$")
+    public void creates_proposal_with_default_data() throws Throwable {
+        entrepreneursInterface.createProposal();
+        VUtils.waitFor(10);
+
+    }
+
+    @Then("^proposal should be created successfully$")
+    public void proposal_should_be_created_successfully() throws Throwable {
+
+    }
+
+    @Then("^should be visible in the list of proposals$")
+    public void should_be_visible_in_the_list_of_proposals() throws Throwable {
 
     }
 }

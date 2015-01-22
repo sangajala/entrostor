@@ -9,31 +9,10 @@ import org.openqa.selenium.support.How;
  */
 public class LandingPageContainer extends abstractVoyataPageContainer{
     public static final int MAX_TIME_OUT = 60;
-    //	private WebDriver driver;
-    //private static String URL="https://test.voyanta.com/";
-    private static String URL="http://test.voyanta.com";
 
 
-    //	The Email or Password you entered is incorrect. Please try again.
-    
-    
-    @FindBy(how = How.NAME, using = "email")
-    public WebElement inputEmail;
-
-    @FindBy(how = How.NAME, using = "password")
-    public WebElement inputPassword;
-
-    @FindBy(how = How.CSS, using = "button.t-btn")
-    public  WebElement buttonSignIn;
-
-    @FindBy(how= How.PARTIAL_LINK_TEXT, using="Forgot your Password?")
-    public WebElement linkFP;
-
-    @FindBy(how= How.LINK_TEXT, using="Home")
-    public WebElement Home;
-
-    @FindBy(how= How.LINK_TEXT, using="Building")
-    public WebElement Building;
+    @FindBy(how= How.LINK_TEXT, using="Login")
+    public WebElement Login;
 
     @FindBy(how = How.CSS, using = "div.content-wrapper h1.left")
     public WebElement sidebar_label;

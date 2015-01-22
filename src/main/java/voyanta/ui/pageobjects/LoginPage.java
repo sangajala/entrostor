@@ -39,7 +39,7 @@ public class LoginPage extends abstractWebPage {
 				catch(InterruptedException i){
 					System.out.println("sleep error");
 				}
-         Assert.assertTrue("Login unsuccessful. Please check if application is up and running!",pageContainer.body.getText().contains("Overview"));
+         Assert.assertTrue("Login unsuccessful. Please check if application is up and running!",pageContainer.body.getText().contains("Activity Stream"));
          LOGGER .info("Loggin success with the username and password: "+userName+" , "+passWord);
 	 }
 	 

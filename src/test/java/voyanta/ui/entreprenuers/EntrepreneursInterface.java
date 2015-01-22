@@ -1,8 +1,6 @@
 package voyanta.ui.entreprenuers;
 
-import voyanta.ui.pageobjects.CreateRulePage;
-import voyanta.ui.pageobjects.DashboardPage;
-import voyanta.ui.pageobjects.ListOfBusinessRulesPage;
+import voyanta.ui.pageobjects.*;
 import voyanta.ui.utils.VUtils;
 import voyanta.ui.utils.VerifyUtils;
 import voyanta.ui.utils.VoyantaBucket;
@@ -15,8 +13,10 @@ public class EntrepreneursInterface
 {
     private ListOfBusinessRulesPage listOfBusinessRulesPage;
     private CreateRulePage createRulePage;
+   private LoginPage loginPage;
 
     private DashboardPage dashboardPage;
+    private ProposalPage proposalPage;
 
 
     public EntrepreneursInterface()
@@ -24,6 +24,7 @@ public class EntrepreneursInterface
 //       listOfBusinessRulesPage = new ListOfBusinessRulesPage();
 //        createBusinessRulePage = new CreateBusinessRulePage();
         dashboardPage = new DashboardPage();
+        loginPage = new LoginPage();
     }
 
     public void createNewRule()
@@ -118,5 +119,19 @@ public class EntrepreneursInterface
     public void verifyUserIsInLoginPage() {
 
         VerifyUtils.True(dashboardPage.isUserInDashBoardPage());
+    }
+
+    public void login() {
+        loginPage.signIn();
+    }
+
+    public void gotoProposalPage() {
+        proposalPage = dashboardPage.gotoProposalPage();
+    }
+
+    public void createProposal() {
+
+        proposalPage.addNewProposal();
+//        proposalPage.addNewProposal();
     }
 }

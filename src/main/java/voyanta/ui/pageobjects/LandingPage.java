@@ -11,7 +11,7 @@ public class LandingPage extends abstractWebPage {
 
     voyanta.ui.pagecontainers.LandingPageContainer pageContainer = getDataContainer(voyanta.ui.pagecontainers.LandingPageContainer.class);
     public LoginPage gotoLoginPage() {
-        pageContainer.buttonSignIn.click();
+        pageContainer.Login.click();
         VUtils.waitFor(2);
         return new LoginPage();
     }
