@@ -134,4 +134,15 @@ public class EntrepreneursInterface
         proposalPage.addNewProposal();
 //        proposalPage.addNewProposal();
     }
+
+    public void verifyCreatedProposalExists() {
+        VoyantaDriver.getCurrentDriver().navigate().refresh();
+        VerifyUtils.True(VUtils.isListContains(proposalPage.getProposals(), proposalPage.getProposalName()));
+    }
+
+    public void delete_created_proposal() {
+        proposalPage.deleteFirstProposal();
+        VoyantaDriver.getCurrentDriver().navigate().refresh();
+        VUtils.waitFor(5);
+    }
 }

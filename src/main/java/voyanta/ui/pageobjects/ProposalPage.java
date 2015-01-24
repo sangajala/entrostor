@@ -3,11 +3,13 @@ package voyanta.ui.pageobjects;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import voyanta.ui.pagecontainers.ProposalPageContainers;
 import voyanta.ui.utils.VUtils;
 import voyanta.ui.utils.VoyantaDriver;
 import voyanta.ui.utils.WaitUtils;
 
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -19,6 +21,8 @@ public class ProposalPage extends abstractWebPage {
 
     ProposalPageContainers pageContainer = ProposalPage.getDataContainer(ProposalPageContainers.class);
 
+    public String proposal_name = null;
+
 
     public void addNewProposal() {
       //  WaitUtils.waitForElement(pageContainer.save_proposal);
@@ -27,7 +31,8 @@ public class ProposalPage extends abstractWebPage {
         WaitUtils.waitForElement(pageContainer.save_proposal);
         WebDriver driver = VoyantaDriver.getCurrentDriver();
         //driver.findElement(By.name("proposal[name]")).clear();
-        driver.findElement(By.name("proposal[name]")).sendKeys("test"+(new Random()).nextInt());
+        proposal_name = "test"+(new Random()).nextInt();
+        driver.findElement(By.name("proposal[name]")).sendKeys(proposal_name);
         driver.findElement(By.name("proposal[shortSummary]")).clear();
         driver.findElement(By.name("proposal[shortSummary]")).sendKeys("test");
         driver.findElement(By.name("proposal[propProblem]")).clear();
@@ -59,6 +64,25 @@ public class ProposalPage extends abstractWebPage {
         driver.findElement(By.name("proposal[propPitch]")).clear();
         driver.findElement(By.name("proposal[propPitch]")).sendKeys("12");
         driver.findElement(By.cssSelector("input.save_proposal")).click();
+        LOGGER.info("Created proposal name with "+proposal_name);
+
+
+    }
+
+    public String getProposalName() {
+
+        return proposal_name;
+    }
+
+    public List<WebElement> getProposals() {
+        LOGGER.info("Getting list of proposals");
+        return VoyantaDriver.getCurrentDriver().findElements(By.cssSelector("div.project > p"));
+    }
+
+    public void deleteFirstProposal() {
+
+        pageContainer.first_close.click();
+        VUtils.accept_alert();
 
 
     }

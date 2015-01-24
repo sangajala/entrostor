@@ -1,6 +1,7 @@
 package voyanta.ui.entreprenuers;
 
 import cucumber.api.java.Before;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -187,7 +188,7 @@ public class EntreprenuersStepDefs {
     @When("^creates proposal with default data$")
     public void creates_proposal_with_default_data() throws Throwable {
         entrepreneursInterface.createProposal();
-        VUtils.waitFor(10);
+        VUtils.waitFor(1);
 
     }
 
@@ -199,5 +200,12 @@ public class EntreprenuersStepDefs {
     @Then("^should be visible in the list of proposals$")
     public void should_be_visible_in_the_list_of_proposals() throws Throwable {
 
+
+        entrepreneursInterface.verifyCreatedProposalExists();
+    }
+
+    @And("^delete the created proposal$")
+    public void delete_the_created_proposal() throws Throwable {
+       entrepreneursInterface.delete_created_proposal();
     }
 }

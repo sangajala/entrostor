@@ -301,4 +301,14 @@ public class VUtils {
     {
         VoyantaDriver.getCurrentDriver().switchTo().alert().accept();
     }
+
+    public static boolean isListContains(List<WebElement> proposals, String proposalName) {
+        for(WebElement proposal:proposals)
+        {
+
+            if(proposal.getText().contains(proposalName))
+                return true;
+        }
+        return false;
+    }
 }

@@ -43,6 +43,7 @@ Feature: Dashboard checks for entrepreneurs
       And creates proposal with default data
       Then proposal should be created successfully
       And should be visible in the list of proposals
+      And delete the created proposal
 
 
 

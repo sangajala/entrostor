@@ -20,6 +20,11 @@ public class ProposalPageContainers extends abstractVoyataPageContainer {
     @FindBy(how = How.CLASS_NAME, using = "save_proposal")
     public WebElement save_proposal;
 
+    @FindBy(how = How.CSS, using = "div.mp_item_inner > div.icon_block > div.close")
+    public WebElement first_close;
+
+
+
     @Override
     public WebElement getDefaultElement() {
         return headerElement;
