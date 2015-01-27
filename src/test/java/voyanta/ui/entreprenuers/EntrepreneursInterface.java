@@ -6,6 +6,8 @@ import voyanta.ui.utils.VerifyUtils;
 import voyanta.ui.utils.VoyantaBucket;
 import voyanta.ui.utils.VoyantaDriver;
 
+import java.util.List;
+
 /**
  * Created by sriramangajala on 23/07/2014.
  */
@@ -25,6 +27,7 @@ public class EntrepreneursInterface
 //        createBusinessRulePage = new CreateBusinessRulePage();
         dashboardPage = new DashboardPage();
         loginPage = new LoginPage();
+
     }
 
     public void createNewRule()
@@ -144,5 +147,18 @@ public class EntrepreneursInterface
         proposalPage.deleteFirstProposal();
         VoyantaDriver.getCurrentDriver().navigate().refresh();
         VUtils.waitFor(5);
+    }
+
+    public void delete_existing_proposal() {
+
+        proposalPage.deleteProposal(proposalPage.getProposalName());
+        VoyantaDriver.refresh();
+    }
+
+    public void give_proposal_should_be_deleted() {
+
+        List<String> proposals = proposalPage.getListOfProsals();
+
+        VerifyUtils.False(proposals.contains(proposalPage.getProposalName()));
     }
 }

@@ -299,6 +299,7 @@ public class VUtils {
 
     public static void accept_alert()
     {
+        LOGGER.info("Closing alert box by clicking ok....");
         VoyantaDriver.getCurrentDriver().switchTo().alert().accept();
     }
 

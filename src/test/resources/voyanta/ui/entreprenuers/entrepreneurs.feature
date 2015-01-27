@@ -1,15 +1,15 @@
 @entro
 Feature: Dashboard checks for entrepreneurs
 
-  Verify that option 'Proposals' is displayed in the menu
+  Verify that option 'Proposals' is displayed in the menu-done
   Verify that proposal list is displayed in 'My Proposals' page by selecting Proposals option
   Verify that each proposal in proposal list has Edit(Pencil icon) option
-  Verify that each proposal in proposal list has Delete (X) option
+  Verify that each proposal in proposal list has Delete (X) option-done
   Verify that each proposal in proposal list has Activate/Deactivate options
   Verify that Edit proposal form is displayed from Edit icon
   Verify Edit Proposal Form is opened on the right side of proposal list in My proposal page
   Verify that a fully funded proposal can not be edited
-  Verify that Success message is displayed on saving the proposal
+  Verify that Success message is displayed on saving the proposal-done
   Verify that if a field value is changed and then saved, changes should be reflected in view mode (Repeat with each individual field and combination of fields)
   Verify that Warning message is displayed if user tries to navigate to another page without saving proposal after changes are made
   Verify that user can not save proposal without filling mandatory fields
@@ -25,9 +25,11 @@ Feature: Dashboard checks for entrepreneurs
   Verify user stays on the same page after saving proposal
   Verify user can Activate the Inactive proposal
   Verify user can Deactivate the active proposal
-  Verify user can Delete proposal
+  Verify user can Delete proposal-done
   Verify user can not delete Fully funded proposal
 
+
+#  @ej-12
   Scenario: User can login
 
     Given User is in login page of entrostor
@@ -35,7 +37,7 @@ Feature: Dashboard checks for entrepreneurs
     Then user is in dashboard page
 
 
-    @ej-12
+
     Scenario: User can create Proposal
 
       Given user is in dashboard page
@@ -43,7 +45,18 @@ Feature: Dashboard checks for entrepreneurs
       And creates proposal with default data
       Then proposal should be created successfully
       And should be visible in the list of proposals
-      And delete the created proposal
+#      And delete the created proposal
+
+  @ej-12
+  Scenario: user can delete a proposal
+
+    Given user is in dashboard page
+    And a proposal exists in the list
+    When he delete the existing proposal
+    Then the proposal should be deleted
+
+
+
 
 
 

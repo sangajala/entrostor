@@ -13,8 +13,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import voyanta.ui.utils.BrowserFactory;
-import voyanta.ui.utils.VUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -809,6 +807,10 @@ public class VoyantaDriver {
     public static WebElement getLinkByText(String text) {
         return VoyantaDriver.findElement(By.xpath("//div[contains(text(),'"+text+"')]"));
 //        return VoyantaDriver.findElement(By.cssSelector("a:contains('"+text+"')"));
+    }
+
+    public static void refresh() {
+        VoyantaDriver.getCurrentDriver().navigate().refresh();
     }
 
     private static class BrowserCleanup implements Runnable {

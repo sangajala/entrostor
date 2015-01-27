@@ -159,7 +159,7 @@ public class EntreprenuersStepDefs {
 
     @Given("^User is in login page of entrostor$")
     public void user_is_in_homepage_of_entrostor() throws Throwable {
-       webInterface.gotoLoginPage();
+           webInterface.gotoLoginPage();
        entrepreneursInterface.verifyUserIsInLoginPage();
     }
 
@@ -207,5 +207,31 @@ public class EntreprenuersStepDefs {
     @And("^delete the created proposal$")
     public void delete_the_created_proposal() throws Throwable {
        entrepreneursInterface.delete_created_proposal();
+    }
+
+    @And("^a proposal exists in the list$")
+    public void a_proposal_exists_in_the_list() throws Throwable {
+        navigates_to_Proposal_Page();
+        creates_proposal_with_default_data();
+    }
+
+    @When("^he delete the existing proposal$")
+    public void he_delete_the_proposal_existing_proposal() throws Throwable {
+
+        Thread.sleep(3);
+        entrepreneursInterface.delete_existing_proposal();
+        Thread.sleep(3);
+    }
+
+    @Then("^the proposal should be deleted$")
+    public void the_proposal_should_be_deleted() throws Throwable {
+
+        entrepreneursInterface.give_proposal_should_be_deleted();
+
+    }
+
+    @And("^user should not see the proposal$")
+    public void user_should_not_see_the_proposal() throws Throwable {
+
     }
 }

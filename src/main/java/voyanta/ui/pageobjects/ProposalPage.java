@@ -9,6 +9,7 @@ import voyanta.ui.utils.VUtils;
 import voyanta.ui.utils.VoyantaDriver;
 import voyanta.ui.utils.WaitUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -65,6 +66,7 @@ public class ProposalPage extends abstractWebPage {
         driver.findElement(By.name("proposal[propPitch]")).sendKeys("12");
         driver.findElement(By.cssSelector("input.save_proposal")).click();
         LOGGER.info("Created proposal name with "+proposal_name);
+        driver.navigate().refresh();
 
 
     }
@@ -85,5 +87,36 @@ public class ProposalPage extends abstractWebPage {
         VUtils.accept_alert();
 
 
+    }
+
+    public void deleteProposal(String proposalName) {
+
+        List<WebElement> elements = VoyantaDriver.getCurrentDriver().findElements(By.className("mp_item"));
+
+        for(WebElement element:elements)
+        {
+
+            if(element.getText().contains(proposalName))
+            {
+                LOGGER.info("Deleting proposal "+proposalName);
+                element.findElement(By.className("close")).click();
+                VUtils.accept_alert();
+
+            }
+
+        }
+
+    }
+
+    public List<String> getListOfProsals() {
+        List<String> proposals = new ArrayList<String>();
+        List<WebElement> elements = VoyantaDriver.getCurrentDriver().findElements(By.className("mp_item"));
+
+        for(WebElement element:elements)
+        {
+              LOGGER.info(element.getText());
+              proposals.add(element.getText().replace("Activate","").replace("\n","").replace("Inactive","").replace("Deactive",""));
+        }
+        return proposals;
     }
 }
