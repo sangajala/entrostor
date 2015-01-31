@@ -87,10 +87,6 @@ public class ListOfBusinessRulesPage extends abstractPageWithList{
         return new CreateRulePage();
     }
 
-    public ListOfMappingRulesPage gotoMappingRulePage() {
-            container.linkMappingRule.click();
-        return new ListOfMappingRulesPage();
-    }
 
     public CreateRulePage createMappingRule() {
         container.createMappingRule.click();

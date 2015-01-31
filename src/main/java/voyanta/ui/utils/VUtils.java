@@ -1,22 +1,21 @@
 package voyanta.ui.utils;
 
 import com.google.common.base.Stopwatch;
+import cucumber.api.DataTable;
 import cucumber.api.Scenario;
-import gherkin.formatter.model.Row;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.remote.Augmenter;
+import voyanta.ui.datamodel.ProductProductIdComparator;
+import voyanta.ui.datamodel.VHashMap;
 
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
-import cucumber.api.DataTable;
-import voyanta.ui.datamodel.ProductProductIdComparator;
-import voyanta.ui.datamodel.VHashMap;
 
 /**
  * Created by sriramangajala on 11/07/2014.
@@ -296,5 +295,21 @@ public class VUtils {
 		}
 			// TODO Auto-generated method stub
 		return false;
+    }
+
+    public static void accept_alert()
+    {
+        LOGGER.info("Closing alert box by clicking ok....");
+        VoyantaDriver.getCurrentDriver().switchTo().alert().accept();
+    }
+
+    public static boolean isListContains(List<WebElement> proposals, String proposalName) {
+        for(WebElement proposal:proposals)
+        {
+
+            if(proposal.getText().contains(proposalName))
+                return true;
+        }
+        return false;
     }
 }

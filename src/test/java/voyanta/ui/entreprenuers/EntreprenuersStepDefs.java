@@ -1,11 +1,13 @@
 package voyanta.ui.entreprenuers;
 
 import cucumber.api.java.Before;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
 import voyanta.ui.pageobjects.LoginPage;
+import voyanta.ui.utils.VUtils;
 import voyanta.ui.web.WebInterface;
 
 /**
@@ -157,17 +159,79 @@ public class EntreprenuersStepDefs {
 
     @Given("^User is in login page of entrostor$")
     public void user_is_in_homepage_of_entrostor() throws Throwable {
-       webInterface.gotoLoginPage();
+           webInterface.gotoLoginPage();
        entrepreneursInterface.verifyUserIsInLoginPage();
     }
 
     @When("^he tries to login with valid credentials$")
     public void he_tries_to_login_with_valid_credentials() throws Throwable {
+        entrepreneursInterface.login();
 
     }
 
     @Then("^user is in dashboard page$")
     public void user_is_in_dashboard_page() throws Throwable {
+        user_is_in_homepage_of_entrostor();
+        he_tries_to_login_with_valid_credentials();
+    }
+
+    @Given("^user is in home page$")
+    public void user_is_in_home_page() throws Throwable {
+
+    }
+
+    @When("^navigates to 'Proposal' Page$")
+    public void navigates_to_Proposal_Page() throws Throwable {
+       entrepreneursInterface.gotoProposalPage();
+    }
+
+    @When("^creates proposal with default data$")
+    public void creates_proposal_with_default_data() throws Throwable {
+        entrepreneursInterface.createProposal();
+        VUtils.waitFor(1);
+
+    }
+
+    @Then("^proposal should be created successfully$")
+    public void proposal_should_be_created_successfully() throws Throwable {
+
+    }
+
+    @Then("^should be visible in the list of proposals$")
+    public void should_be_visible_in_the_list_of_proposals() throws Throwable {
+
+
+        entrepreneursInterface.verifyCreatedProposalExists();
+    }
+
+    @And("^delete the created proposal$")
+    public void delete_the_created_proposal() throws Throwable {
+       entrepreneursInterface.delete_created_proposal();
+    }
+
+    @And("^a proposal exists in the list$")
+    public void a_proposal_exists_in_the_list() throws Throwable {
+        navigates_to_Proposal_Page();
+        creates_proposal_with_default_data();
+    }
+
+    @When("^he delete the existing proposal$")
+    public void he_delete_the_proposal_existing_proposal() throws Throwable {
+
+        Thread.sleep(3);
+        entrepreneursInterface.delete_existing_proposal();
+        Thread.sleep(3);
+    }
+
+    @Then("^the proposal should be deleted$")
+    public void the_proposal_should_be_deleted() throws Throwable {
+
+        entrepreneursInterface.give_proposal_should_be_deleted();
+
+    }
+
+    @And("^user should not see the proposal$")
+    public void user_should_not_see_the_proposal() throws Throwable {
 
     }
 }
